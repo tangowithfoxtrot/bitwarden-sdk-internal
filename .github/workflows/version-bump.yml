@@ -83,7 +83,7 @@ jobs:
       ### bitwarden
       - name: Bump bitwarden crate Version
         if: ${{ inputs.project == 'bitwarden' }}
-        run: cargo set-version -p bitwarden ${{ inputs.version_number }}
+        run: cargo set-version -p bitwarden-core ${{ inputs.version_number }}
 
       ############################
       # VERSION BUMP SECTION END #
