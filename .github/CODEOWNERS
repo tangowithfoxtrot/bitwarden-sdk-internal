@@ -17,6 +17,3 @@
 .github/workflows/release-rust-crates.yml
 .github/workflows/release-swift.yml
 .github/workflows/version-bump.yml
-
-# Secrets Manager team
-crates/bitwarden-sm @bitwarden/team-secrets-manager-dev
