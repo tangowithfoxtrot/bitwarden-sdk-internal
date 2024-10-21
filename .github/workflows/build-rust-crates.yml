@@ -25,7 +25,6 @@ jobs:
           - windows-latest
 
         package:
-          - bitwarden
           - bitwarden-api-api
           - bitwarden-api-identity
           - bitwarden-crypto
