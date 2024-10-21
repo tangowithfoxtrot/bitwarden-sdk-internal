@@ -91,10 +91,10 @@ jobs:
         working-directory: languages/kotlin/sdk/src/main/jniLibs
         run: |
           mkdir armeabi-v7a arm64-v8a x86 x86_64
-          mv /home/runner/work/sdk/sdk/android-armv7-linux-androideabi/libbitwarden_uniffi.so ./armeabi-v7a/libbitwarden_uniffi.so
-          mv /home/runner/work/sdk/sdk/android-aarch64-linux-android/libbitwarden_uniffi.so ./arm64-v8a/libbitwarden_uniffi.so
-          mv /home/runner/work/sdk/sdk/android-i686-linux-android/libbitwarden_uniffi.so ./x86/libbitwarden_uniffi.so
-          mv /home/runner/work/sdk/sdk/android-x86_64-linux-android/libbitwarden_uniffi.so ./x86_64/libbitwarden_uniffi.so
+          mv ./sdk/android-armv7-linux-androideabi/libbitwarden_uniffi.so ./languages/kotlin/sdk/src/main/jniLibs/armeabi-v7a/libbitwarden_uniffi.so
+          mv ./sdk/android-aarch64-linux-android/libbitwarden_uniffi.so ./languages/kotlin/sdk/src/main/jniLibs/arm64-v8a/libbitwarden_uniffi.so
+          mv ./sdk/android-i686-linux-android/libbitwarden_uniffi.so ./languages/kotlin/sdk/src/main/jniLibs/x86/libbitwarden_uniffi.so
+          mv ./sdk/android-x86_64-linux-android/libbitwarden_uniffi.so ./languages/kotlin/sdk/src/main/jniLibs/x86_64/libbitwarden_uniffi.so
 
       - name: Generate bindings
         working-directory: languages/kotlin
