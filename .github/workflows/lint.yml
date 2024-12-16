@@ -49,6 +49,12 @@ jobs:
         with:
           sarif_file: clippy_result.sarif
 
+      - name: Install cargo-sort
+        run: cargo install cargo-sort --locked --git https://github.com/DevinR528/cargo-sort.git --rev f5047967021cbb1f822faddc355b3b07674305a1
+
+      - name: Cargo sort
+        run: cargo sort --workspace --check
+
       - name: Set up Node
         uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4.1.0
         with:
