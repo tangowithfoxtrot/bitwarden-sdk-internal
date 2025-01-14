@@ -17,6 +17,9 @@ jobs:
   direct-minimal-versions:
     name: Check dependencies minimal versions for - ${{ matrix.settings.os }} - ${{ matrix.settings.target }}
     runs-on: ${{ matrix.settings.os || 'ubuntu-24.04' }}
+    env:
+      RUST_NIGHTLY_TOOLCHAIN: nightly-2025-01-13
+
     strategy:
       fail-fast: false
       matrix:
@@ -40,7 +43,7 @@ jobs:
       - name: Install rust
         uses: dtolnay/rust-toolchain@a54c7afa936fefeb4456b2dd8068152669aa8203 # stable
         with:
-          toolchain: nightly
+          toolchain: "$RUST_NIGHTLY_TOOLCHAIN"
           targets: ${{ matrix.settings.target }}
 
       - name: Cache cargo registry
