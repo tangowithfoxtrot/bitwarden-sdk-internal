@@ -29,5 +29,18 @@
       "matchUpdateTypes": ["minor", "patch"]
     }
   ],
-  "ignoreDeps": ["dotnet-sdk"]
+  "ignoreDeps": ["dotnet-sdk"],
+  "regexManagers": [
+    {
+      "fileMatch": [
+        "^\\.github/workflows/lint\\.yml$",
+        "^\\.github/workflows/direct-minimal-versions\\.yml$",
+        "^\\.github/workflows/minimum-rust-version\\.yml$",
+        "^\\.github/workflows/rustdoc\\.yml$"
+      ],
+      "matchStrings": ["RUST_NIGHTLY_TOOLCHAIN: nightly-(?<version>\\d{4}-\\d{2}-\\d{2})"],
+      "replaceString": "RUST_NIGHTLY_TOOLCHAIN: nightly-{{newVersion}}",
+      "datasourceTemplate": "rust-nightly"
+    }
+  ]
 }
