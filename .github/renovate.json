@@ -30,17 +30,33 @@
     }
   ],
   "ignoreDeps": ["dotnet-sdk"],
+  // "regexManagers": [
+  //   {
+  //     "fileMatch": [
+  //       "^\\.github/workflows/lint\\.yml$",
+  //       "^\\.github/workflows/direct-minimal-versions\\.yml$",
+  //       "^\\.github/workflows/minimum-rust-version\\.yml$",
+  //       "^\\.github/workflows/rustdoc\\.yml$"
+  //     ],
+  //     "matchStrings": ["RUST_NIGHTLY_TOOLCHAIN: nightly-(?<version>\\d{4}-\\d{2}-\\d{2})"],
+  //     "replaceString": "RUST_NIGHTLY_TOOLCHAIN: nightly-{{newVersion}}",
+  //     "datasourceTemplate": "rust-nightly"
+  //   }
+  // ]
   "regexManagers": [
     {
-      "fileMatch": [
-        "^\\.github/workflows/lint\\.yml$",
-        "^\\.github/workflows/direct-minimal-versions\\.yml$",
-        "^\\.github/workflows/minimum-rust-version\\.yml$",
-        "^\\.github/workflows/rustdoc\\.yml$"
+      "fileMatch": ["(^|/)rust-toolchain\\.toml?$"],
+      "matchStrings": [
+        "channel\\s*=\\s*\"(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)\""
       ],
-      "matchStrings": ["RUST_NIGHTLY_TOOLCHAIN: nightly-(?<version>\\d{4}-\\d{2}-\\d{2})"],
-      "replaceString": "RUST_NIGHTLY_TOOLCHAIN: nightly-{{newVersion}}",
-      "datasourceTemplate": "rust-nightly"
+      "depNameTemplate": "rust",
+      "lookupNameTemplate": "rust-lang/rust",
+      "datasourceTemplate": "github-tags"
     }
-  ]
+  ],
+  "packageRules": [{
+    "matchManagers": ["regex"],
+    "matchDepNames": ["rust"],
+    "commitMessageTopic": "Rust"
+  }]
 }
