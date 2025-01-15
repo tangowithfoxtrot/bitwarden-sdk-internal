@@ -9,7 +9,6 @@ version = "1.0.0"
 authors = ["Bitwarden Inc"]
 edition = "2021"
 # Important: When updating rust-version, make sure to update the Readme file
-# and also the `rust-version` field in all the `Cargo.toml`.
 # Note: Changing rust-version should be considered a breaking change
 rust-version = "1.75"
 homepage = "https://bitwarden.com"
