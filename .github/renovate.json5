@@ -24,6 +24,11 @@
       "matchUpdateTypes": ["minor", "patch"]
     },
     {
+      "matchManagers": ["regex"],
+      "matchDepNames": ["rust"],
+      "commitMessageTopic": "Rust"
+    },
+    {
       "groupName": "go minor",
       "matchManagers": ["gomod"],
       "matchUpdateTypes": ["minor", "patch"]
@@ -54,10 +59,5 @@
       "lookupNameTemplate": "rust-lang/rust",
       "datasourceTemplate": "github-tags"
     }
-  ],
-  "packageRules": [{
-    "matchManagers": ["regex"],
-    "matchDepNames": ["rust"],
-    "commitMessageTopic": "Rust"
-  }]
+  ]
 }
