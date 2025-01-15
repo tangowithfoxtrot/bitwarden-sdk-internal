@@ -43,8 +43,9 @@
   //     "datasourceTemplate": "rust-nightly"
   //   }
   // ]
-  "regexManagers": [
+  "customManagers": [
     {
+      "customType": "regex",
       "fileMatch": ["(^|/)rust-toolchain\\.toml?$"],
       "matchStrings": [
         "channel\\s*=\\s*\"(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)\""
