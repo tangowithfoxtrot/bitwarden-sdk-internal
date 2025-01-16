@@ -41,6 +41,8 @@ jobs:
       - name: Set Rust Nightly Toolchain
         id: nightly-toolchain
         shell: bash
+        env:
+          LANG: "C.UTF-8" # Windows uses a different encoding from everything else, which breaks grep -P
         run: |
           RUST_NIGHTLY_TOOLCHAIN="$(grep -oP '^nightly-channel.*"(\K.*?)(?=")' rust-toolchain.toml)"
           echo "RUST_NIGHTLY_TOOLCHAIN=${RUST_NIGHTLY_TOOLCHAIN}" | tee -a "${GITHUB_OUTPUT}"
