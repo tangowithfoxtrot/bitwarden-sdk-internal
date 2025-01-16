@@ -32,7 +32,7 @@ jobs:
         id: toolchain
         shell: bash
         run: |
-          RUST_TOOLCHAIN="$(grep -oP 'rust-version.*"(\K.*?)(?=")' Cargo.toml)"
+          RUST_TOOLCHAIN="$(grep -oP '^rust-version.*"(\K.*?)(?=")' Cargo.toml)"
           echo "RUST_TOOLCHAIN=${RUST_TOOLCHAIN}" | tee -a "${GITHUB_OUTPUT}"
 
 
@@ -40,7 +40,7 @@ jobs:
         id: nightly-toolchain
         shell: bash
         run: |
-          RUST_NIGHTLY_TOOLCHAIN="$(grep -oP 'nightly-channel.*"(\K.*?)(?=")' rust-toolchain.toml)"
+          RUST_NIGHTLY_TOOLCHAIN="$(grep -oP '^nightly-channel.*"(\K.*?)(?=")' rust-toolchain.toml)"
           echo "RUST_NIGHTLY_TOOLCHAIN=${RUST_NIGHTLY_TOOLCHAIN}" | tee -a "${GITHUB_OUTPUT}"
 
       - name: Install rust

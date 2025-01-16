@@ -31,9 +31,9 @@ jobs:
         shell: bash
         run: |
           if [[ "${{ matrix.channel }}" == 'rust-toolchain' ]]; then
-            RUST_TOOLCHAIN="$(grep -oP 'channel.*"(\K.*?)(?=")' rust-toolchain.toml)"
+            RUST_TOOLCHAIN="$(grep -oP '^channel.*"(\K.*?)(?=")' rust-toolchain.toml)"
           elif [[ "${{ matrix.channel }}" == 'msrv' ]]; then
-            RUST_TOOLCHAIN="$(grep -oP 'rust-version.*"(\K.*?)(?=")' Cargo.toml)"
+            RUST_TOOLCHAIN="$(grep -oP '^rust-version.*"(\K.*?)(?=")' Cargo.toml)"
           else
             RUST_TOOLCHAIN="${{ matrix.channel }}"
           fi
@@ -43,7 +43,7 @@ jobs:
         id: nightly-toolchain
         shell: bash
         run: |
-          RUST_NIGHTLY_TOOLCHAIN="$(grep -oP 'nightly-channel.*"(\K.*?)(?=")' rust-toolchain.toml)"
+          RUST_NIGHTLY_TOOLCHAIN="$(grep -oP '^nightly-channel.*"(\K.*?)(?=")' rust-toolchain.toml)"
           echo "RUST_NIGHTLY_TOOLCHAIN=${RUST_NIGHTLY_TOOLCHAIN}" | tee -a "${GITHUB_OUTPUT}"
 
       - name: Install rust
