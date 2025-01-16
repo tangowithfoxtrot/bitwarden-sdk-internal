@@ -57,7 +57,10 @@ jobs:
         uses: Swatinem/rust-cache@82a92a6e8fbeee089604da2575dc567ae9ddeaab # v2.7.5
 
       - name: Cargo fmt
-        run: cargo +"$RUST_NIGHTLY_TOOLCHAIN" fmt --check
+        # run: cargo +"$RUST_NIGHTLY_TOOLCHAIN" fmt --check
+        run: cargo fmt --check
+        env:
+          RUSTC_BOOTSTRAP: 1
 
       - name: Install clippy-sarif and sarif-fmt
         run: cargo install clippy-sarif sarif-fmt --locked --git https://github.com/psastras/sarif-rs.git --rev 11c33a53f6ffeaed736856b86fb6b7b09fabdfd8
@@ -91,7 +94,10 @@ jobs:
         run: cargo install cargo-udeps --version 0.1.53 --locked
 
       - name: Cargo udeps
-        run: cargo +"$RUST_NIGHTLY_TOOLCHAIN" udeps --workspace --all-features
+        # run: cargo +"$RUST_NIGHTLY_TOOLCHAIN" udeps --workspace --all-features
+        run: cargo udeps --workspace --all-features
+        env:
+          RUSTC_BOOTSTRAP: 1
 
       - name: Set up Node
         uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4.1.0
