@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["github>bitwarden/renovate-config:non-pinned"],
+  "extends": ["github>tangowithfoxtrot/renovate-config:non-pinned"],
   "separateMajorMinor": true,
   "enabledManagers": ["cargo", "dockerfile", "github-actions", "gomod", "npm", "nuget"],
   "constraints": {
@@ -35,29 +35,4 @@
     }
   ],
   "ignoreDeps": ["dotnet-sdk"],
-  // "regexManagers": [
-  //   {
-  //     "fileMatch": [
-  //       "^\\.github/workflows/lint\\.yml$",
-  //       "^\\.github/workflows/direct-minimal-versions\\.yml$",
-  //       "^\\.github/workflows/minimum-rust-version\\.yml$",
-  //       "^\\.github/workflows/rustdoc\\.yml$"
-  //     ],
-  //     "matchStrings": ["RUST_NIGHTLY_TOOLCHAIN: nightly-(?<version>\\d{4}-\\d{2}-\\d{2})"],
-  //     "replaceString": "RUST_NIGHTLY_TOOLCHAIN: nightly-{{newVersion}}",
-  //     "datasourceTemplate": "rust-nightly"
-  //   }
-  // ]
-  "customManagers": [
-    {
-      "customType": "regex",
-      "fileMatch": ["(^|/)rust-toolchain\\.toml?$"],
-      "matchStrings": [
-        "channel\\s*=\\s*\"(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)\""
-      ],
-      "depNameTemplate": "rust",
-      "lookupNameTemplate": "rust-lang/rust",
-      "datasourceTemplate": "github-tags"
-    }
-  ]
 }
