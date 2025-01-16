@@ -32,12 +32,12 @@ jobs:
       - name: Install rust
         uses: dtolnay/rust-toolchain@a54c7afa936fefeb4456b2dd8068152669aa8203 # stable
         with:
-          toolchain: "$RUST_NIGHTLY_TOOLCHAIN"
+          toolchain: "${{ steps.nightly-toolchain.outputs.RUST_NIGHTLY_TOOLCHAIN }}"
 
       - name: Build documentation
         env:
           RUSTDOCFLAGS: "--enable-index-page -Zunstable-options"
-        run: cargo +"$RUST_NIGHTLY_TOOLCHAIN" doc --no-deps --all-features --document-private-items
+        run: cargo +"${{ steps.nightly-toolchain.outputs.RUST_NIGHTLY_TOOLCHAIN }}" doc --no-deps --all-features --document-private-items
 
       - name: Deploy to GitHub Pages
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
