@@ -24,14 +24,14 @@
       "matchUpdateTypes": ["minor", "patch"]
     },
     {
-      "matchManagers": ["regex"],
-      "matchDepNames": ["rust", "rust-nightly"],
-      "commitMessageTopic": "Rust"
-    },
-    {
       "groupName": "go minor",
       "matchManagers": ["gomod"],
       "matchUpdateTypes": ["minor", "patch"]
+    },
+    {
+      "matchManagers": ["regex"],
+      "matchDepNames": ["rust", "rust-nightly"],
+      "commitMessageTopic": "Rust"
     }
   ],
   "ignoreDeps": ["dotnet-sdk"],
