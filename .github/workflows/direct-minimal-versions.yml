@@ -41,8 +41,6 @@ jobs:
       - name: Set Rust Nightly Toolchain
         id: nightly-toolchain
         shell: bash
-        env:
-          LC_ALL: "C" # https://stackoverflow.com/a/35337552
         run: |
           RUST_NIGHTLY_TOOLCHAIN="$(grep -oP '^nightly-channel.*"(\K.*?)(?=")' rust-toolchain.toml)"
           echo "RUST_NIGHTLY_TOOLCHAIN=${RUST_NIGHTLY_TOOLCHAIN}" | tee -a "${GITHUB_OUTPUT}"
