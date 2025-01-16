@@ -35,7 +35,6 @@ jobs:
           RUST_TOOLCHAIN="$(grep -oP '^rust-version.*"(\K.*?)(?=")' Cargo.toml)"
           echo "RUST_TOOLCHAIN=${RUST_TOOLCHAIN}" | tee -a "${GITHUB_OUTPUT}"
 
-
       - name: Set Rust Nightly Toolchain
         id: nightly-toolchain
         shell: bash

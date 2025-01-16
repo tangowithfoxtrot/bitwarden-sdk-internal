@@ -34,5 +34,5 @@
       "commitMessageTopic": "Rust"
     }
   ],
-  "ignoreDeps": ["dotnet-sdk"],
+  "ignoreDeps": ["dotnet-sdk"]
 }
