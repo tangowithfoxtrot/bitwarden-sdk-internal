@@ -25,7 +25,7 @@
     },
     {
       "matchManagers": ["regex"],
-      "matchDepNames": ["rust"],
+      "matchDepNames": ["rust", "rust-nightly"],
       "commitMessageTopic": "Rust"
     },
     {
