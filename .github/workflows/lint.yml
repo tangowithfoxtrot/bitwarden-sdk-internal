@@ -14,8 +14,6 @@ jobs:
     name: Check Style
 
     runs-on: ubuntu-24.04
-    env:
-      RUST_NIGHTLY_TOOLCHAIN: nightly-2025-01-13
 
     strategy:
       fail-fast: false
@@ -40,6 +38,13 @@ jobs:
             RUST_TOOLCHAIN="${{ matrix.channel }}"
           fi
           echo "RUST_TOOLCHAIN=${RUST_TOOLCHAIN}" | tee -a "${GITHUB_OUTPUT}"
+
+      - name: Set Rust Nightly Toolchain
+        id: nightly-toolchain
+        shell: bash
+        run: |
+          RUST_NIGHTLY_TOOLCHAIN="$(grep -oP 'nightly-channel.*"(\K.*?)(?=")' rust-toolchain.toml)"
+          echo "RUST_NIGHTLY_TOOLCHAIN=${RUST_NIGHTLY_TOOLCHAIN}" | tee -a "${GITHUB_OUTPUT}"
 
       - name: Install rust
         uses: dtolnay/rust-toolchain@a54c7afa936fefeb4456b2dd8068152669aa8203 # stable
