@@ -55,7 +55,7 @@ jobs:
         id: toolchain
         shell: bash
         run: |
-          RUST_TOOLCHAIN="$(grep -oP '^channel.*"(\K.*?)(?=")' rust-toolchain.toml)"
+          RUST_TOOLCHAIN="$(grep -oP '^channel.*"(\K.*?)(?=")' ${{ github.workspace }}/rust-toolchain.toml)"
           echo "RUST_TOOLCHAIN=${RUST_TOOLCHAIN}" | tee -a "${GITHUB_OUTPUT}"
 
       - name: Install rust
