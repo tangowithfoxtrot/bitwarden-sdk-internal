@@ -70,7 +70,7 @@ impl TryFrom<CipherType> for ItemType {
     fn try_from(value: CipherType) -> Result<Self, Self::Error> {
         match value {
             CipherType::Login(_) => Ok(ItemType::Login),
-            CipherType::Card(_) => Ok(ItemType::Login),
+            CipherType::Card(_) => Ok(ItemType::Identity),
             CipherType::Identity(_) => Ok(ItemType::Identity),
             CipherType::SecureNote(_) => Ok(ItemType::Document),
             CipherType::SshKey(_) => {
@@ -86,7 +86,7 @@ impl From<CipherType> for Vec<Credential> {
         match value {
             CipherType::Login(login) => (*login).into(),
             // TODO(PM-15450): Add support for credit cards.
-            CipherType::Card(_) => vec![],
+            CipherType::Card(card) => (*card).into(),
             // TODO(PM-15451): Add support for identities.
             CipherType::Identity(_) => vec![],
             // Secure Notes only contains a note field which is handled by `TryFrom<Cipher> for
