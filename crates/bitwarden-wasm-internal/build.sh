@@ -36,8 +36,7 @@ wasm-opt -Os ./crates/bitwarden-wasm-internal/npm/node/bitwarden_wasm_internal_b
 wasm-opt -Os ./crates/bitwarden-wasm-internal/npm/node/bitwarden_wasm_internal_bg.mvp.wasm -o ./crates/bitwarden-wasm-internal/npm/node/bitwarden_wasm_internal_bg.mvp.wasm
 
 # Transpile to JS
-wasm2js ./crates/bitwarden-wasm-internal/npm/node/bitwarden_wasm_internal_bg.mvp
-.wasm -o ./crates/bitwarden-wasm-internal/npm/bitwarden_wasm_internal_bg.wasm.js
+wasm2js ./crates/bitwarden-wasm-internal/npm/node/bitwarden_wasm_internal_bg.mvp.wasm -o ./crates/bitwarden-wasm-internal/npm/bitwarden_wasm_internal_bg.wasm.js
 npx terser ./crates/bitwarden-wasm-internal/npm/bitwarden_wasm_internal_bg.wasm.js -o ./crates/bitwarden-wasm-internal/npm/bitwarden_wasm_internal_bg.wasm.js
 
 # Remove unneeded files
